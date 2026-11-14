@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · TokenFlow</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+</head>
+<body>
+  <main class="container" id="dashboard">
+    <h1>TokenFlow</h1>
+    <p class="subtitle">Your account dashboard</p>
+    <p>Signed in as:</p>
+    <strong id="userEmail">Loading...</strong>
+    <button type="button" id="logout">Sign out</button>
+    <div id="message" class="message" aria-live="polite"></div>
+  </main>
+</body>
+</html>

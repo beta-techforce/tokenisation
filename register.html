@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Account · TokenFlow</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Create your account</h1>
+    <p class="subtitle">Join TokenFlow with your email address.</p>
+    <form id="registerForm">
+      <label for="name">Full name</label>
+      <input id="name" type="text" required autocomplete="name">
+      <label for="email">Email address</label>
+      <input id="email" type="email" required autocomplete="email">
+      <label for="password">Password</label>
+      <input id="password" type="password" minlength="8" required autocomplete="new-password">
+      <button type="submit">Create account</button>
+    </form>
+    <div id="message" class="message" aria-live="polite"></div>
+    <div class="links">Already registered? <a href="login.html">Sign in</a></div>
+  </main>
+</body>
+</html>

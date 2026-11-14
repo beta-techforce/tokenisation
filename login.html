@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login · TokenFlow</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Welcome back</h1>
+    <p class="subtitle">Sign in to your TokenFlow account.</p>
+    <form id="loginForm">
+      <label for="email">Email address</label>
+      <input id="email" type="email" required autocomplete="email">
+      <label for="password">Password</label>
+      <input id="password" type="password" required autocomplete="current-password">
+      <button type="submit">Sign in</button>
+    </form>
+    <button type="button" id="googleLogin">Continue with Google</button>
+    <div id="message" class="message" aria-live="polite"></div>
+    <div class="links">New to TokenFlow? <a href="register.html">Create account</a></div>
+  </main>
+</body>
+</html>
