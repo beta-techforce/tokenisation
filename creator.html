@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><title>Creator Dashboard · TokenFlow</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+:root{color-scheme:dark}body{margin:0;background:#0b1220;color:#e8eef9;font-family:system-ui,Arial,sans-serif}
+.wrap{width:min(1050px,94%);margin:32px auto}.top,.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-size:20px;font-weight:850}.muted{color:#9aa9bf}h1{font-size:clamp(26px,5vw,38px);margin-bottom:6px}
+.panel,.stat,.app{background:#121d30;border:1px solid #263650;border-radius:16px;padding:18px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.stat{margin:0;background:#0d1728}
+.stat strong{display:block;font-size:25px;margin-top:5px}label{display:block;margin:12px 0 6px;font-weight:650}
+input,textarea{box-sizing:border-box;width:100%;background:#0b1424;color:white;border:1px solid #344763;border-radius:10px;padding:11px;font:inherit}
+textarea{min-height:80px}button,.linkbtn{border:0;border-radius:10px;padding:11px 15px;font:inherit;font-weight:750;cursor:pointer;text-decoration:none;display:inline-block}
+button:disabled{opacity:.5}.primary{background:#7893ff;color:#07101f}.secondary{background:#263750;color:#fff}.danger{background:#8d3545;color:white}
+.notice{padding:12px;border-radius:10px;background:#1c2d45;margin:12px 0}.error{background:#48232b;color:#ffc1c8}.success{background:#164332;color:#b5f5d7}
+.hidden{display:none!important}.small{font-size:13px}.app{margin:0;background:#0d1728;overflow-wrap:anywhere}.pill{background:#263750;border-radius:20px;padding:4px 9px;font-size:12px}
+.empty{padding:20px;text-align:center;border:1px dashed #40516d;border-radius:12px;color:#9aa9bf}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 14px}
+a{color:#a8bbff}
+</style></head><body><main class="wrap">
+<header class="top"><div class="brand">⚡ TokenFlow / Creator Studio</div><div class="row"><a class="linkbtn secondary" href="index.html">Main dashboard</a><button id="logoutBtn" class="secondary">Log out</button></div></header>
+<h1>Creator dashboard</h1><p class="muted">Create and manage your TokenFlow applications.</p><div id="notice" class="notice hidden"></div>
+<section id="loading" class="panel">Checking your account…</section>
+<section id="locked" class="panel hidden"><h2>Advanced access required</h2><p>Your account needs the <b>advanced</b> tier to create and manage applications.</p><a class="linkbtn primary" href="access.html">Open Access Management</a></section>
+<div id="creatorArea" class="hidden">
+<div class="grid"><div class="stat"><span class="muted">Your applications</span><strong id="appCount">0</strong></div><div class="stat"><span class="muted">Active applications</span><strong id="activeCount">0</strong></div><div class="stat"><span class="muted">Account tier</span><strong>ADVANCED</strong></div></div>
+<section class="panel" id="formPanel"><div class="row"><h2 id="formTitle">Create a new app</h2><button id="cancelEdit" class="secondary hidden" type="button">Cancel edit</button></div>
+<form id="appForm"><div class="formgrid">
+<div><label for="appName">App name *</label><input id="appName" maxlength="60" required placeholder="My Store"></div>
+<div><label for="appSlug">App slug *</label><input id="appSlug" maxlength="48" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="my-store"><p class="muted small">Lowercase letters, numbers and hyphens.</p></div>
+<div><label for="tokenName">Token name</label><input id="tokenName" maxlength="30" value="Tokens" required></div>
+<div><label for="tokenSymbol">Token symbol</label><input id="tokenSymbol" maxlength="10" value="TF" required></div>
+<div><label for="logoUrl">Logo URL</label><input id="logoUrl" type="url" maxlength="500" placeholder="https://example.com/logo.png"></div>
+<div><label for="origins">Allowed website origins</label><input id="origins" placeholder="https://example.com, https://shop.example.com"><p class="muted small">Full origins separated by commas, no page paths.</p></div>
+</div><label for="appDescription">Description</label><textarea id="appDescription" maxlength="500" placeholder="What does this app do?"></textarea>
+<div class="row" style="margin-top:14px"><button id="saveBtn" class="primary" type="submit">Create app</button></div></form></section>
+<section class="panel"><div class="row"><h2>My applications</h2><button id="refreshBtn" class="secondary" type="button">Refresh</button></div><div id="appList" class="grid">Loading apps…</div></section>
+</div></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/config.js"></script><script src="assets/js/creator-dashboard.js"></script>
+</body></html>
