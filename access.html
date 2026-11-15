@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Access Management · TokenFlow</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    :root{color-scheme:dark}
+    body{margin:0;background:#0b1220;color:#e8eef9;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .wrap{width:min(920px,92%);margin:40px auto}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+    .brand{font-size:20px;font-weight:800;letter-spacing:.3px}
+    .muted{color:#9aa9bf}
+    .panel{background:#121d30;border:1px solid #263650;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 12px 35px #0002}
+    h1{font-size:clamp(25px,5vw,36px);margin:0 0 8px}
+    h2{font-size:19px;margin:0 0 14px}
+    p{line-height:1.55}
+    label{display:block;font-weight:650;margin:12px 0 7px}
+    textarea{width:100%;box-sizing:border-box;min-height:105px;resize:vertical;background:#0b1424;color:#fff;border:1px solid #344763;border-radius:11px;padding:12px;font:inherit}
+    button,.linkbtn{border:0;border-radius:11px;padding:11px 16px;font:inherit;font-weight:750;cursor:pointer;text-decoration:none;display:inline-block}
+    .primary{background:#6d8cff;color:#07101f}
+    .secondary{background:#263750;color:#e8eef9}
+    .approve{background:#1d8b63;color:white}
+    .reject{background:#a83e50;color:white}
+    button:disabled{opacity:.55;cursor:not-allowed}
+    .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+    .status{padding:5px 10px;border-radius:999px;background:#263750;font-size:12px;font-weight:800;text-transform:uppercase}
+    .pending{background:#55451e;color:#ffdf8c}.approved{background:#174c3d;color:#9bf0ce}.rejected{background:#542631;color:#ffb2bd}
+    .item{border:1px solid #2a3a53;border-radius:13px;padding:15px;margin:12px 0;background:#0d1728}
+    .item p{margin:8px 0;color:#c2ccdc;overflow-wrap:anywhere}
+    .notice{padding:12px 14px;border-radius:11px;margin:12px 0;background:#1c2d45;color:#dbe8ff}
+    .error{background:#48232b;color:#ffc1c8}.success{background:#164332;color:#b5f5d7}
+    .small{font-size:13px}.hidden{display:none!important}
+    a{color:#9db5ff}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">⚡ TokenFlow <span class="muted">/ Access</span></div>
+      <div class="row">
+        <a class="linkbtn secondary" href="index.html">Dashboard</a>
+        <button id="logoutBtn" class="secondary" type="button">Log out</button>
+      </div>
+    </header>
+
+    <section>
+      <h1>Access management</h1>
+      <p class="muted">Request Advanced creator access or review access requests if you are the platform administrator.</p>
+      <div id="message" class="notice hidden" role="status"></div>
+      <div id="loading" class="panel">Checking your TokenFlow session…</div>
+    </section>
+
+    <section id="userPanel" class="panel hidden">
+      <div class="row" style="justify-content:space-between">
+        <h2>Advanced access</h2><span id="tierBadge" class="status">regular</span>
+      </div>
+      <p id="userIntro" class="muted"></p>
+      <div id="requestForm">
+        <label for="requestMessage">Why do you need Advanced access? <span class="muted">(optional)</span></label>
+        <textarea id="requestMessage" maxlength="1000" placeholder="Briefly describe what you plan to build with TokenFlow…"></textarea>
+        <div class="row" style="margin-top:13px">
+          <button id="submitRequest" class="primary" type="button">Request Advanced Access</button>
+        </div>
+      </div>
+      <div id="ownRequests" style="margin-top:20px">
+        <h2>Your requests</h2>
+        <div id="ownRequestList" class="muted small">Loading your request history…</div>
+      </div>
+    </section>
+
+    <section id="adminPanel" class="panel hidden">
+      <div class="row" style="justify-content:space-between">
+        <h2>Pending access requests</h2>
+        <button id="refreshBtn" class="secondary" type="button">Refresh</button>
+      </div>
+      <div id="adminRequestList" class="muted">Loading pending requests…</div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/access.js"></script>
+</body>
+</html>
